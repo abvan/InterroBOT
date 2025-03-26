@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard - InterroBot</title>
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="interviewer_questions_dashboard.css" />
+</head>
+
+<body>
+  <!-- Header Section -->
+  <header>
+    <img class="logo" src="images/colored_sglogo.png" alt="Saint-Gobain Logo">
+    <button class="logout-btn">
+      <i class='bx bx-log-out'></i> Logout
+    </button>
+  </header>
+
+  <!-- Main Section -->
+  <main class="content">
+    <!-- Domain Selection Section -->
+    <div class="domain-selection">
+      <label for="domain-select">Select Domain:</label>
+      <select id="domain-select">
+        <option value="default">Choose a domain</option>
+        <option value="data_engineering">Data Engineering</option>
+        <option value="data_analysis">Data Analysis</option>
+        <option value="software_dev">Software Development</option>
+      </select>
+    </div>
+
+    <!-- Questions Section -->
+    <div class="questions-section" id="questions-section" style="display: none;">
+      <h3>Select at least 10 questions:</h3>
+      <table id="questions-table">
+        <thead>
+          <tr>
+            <th>Select</th>
+            <th>Question</th>
+            <th>Answer</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Questions will be added here dynamically -->
+        </tbody>
+      </table>
+      <!-- Buttons Section with Flexbox -->
+<div class="buttons-container">
+      <button id="add-question-btn">+ Add New Question</button>
+    </div>
+
+    <!-- Submit Button Moved to Bottom-Right and Hidden Initially -->
+<button id="submit-btn" style="display: none;">Submit</button>
+</div>
+  </main>
+
+  <script src="interviewer_questions_dashboard.js"></script>
+</body>
+
+</html>

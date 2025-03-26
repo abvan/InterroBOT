@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interrobot Login</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="candidate_login.css">
+</head>
+
+<body>
+    <header>
+        <img class="logo" src="images/colored_sglogo.png" alt="logo">
+        <nav>
+            <ul class="nav_links">
+                <li><a href="#">Features</a></li>
+                <li><a href="#">About us</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Results</a></li>
+            </ul>
+        </nav>
+        <a class="cta" href="adminlogin.html"><button><i class='bx bxs-user'></i> Candidate Login</button>
+        </a>
+    </header>
+
+    <div class="container">
+        <div class="form-box login">
+            <form action="">
+                <h2>Candidate Login</h2>
+                <div class="input-box">
+                    <input type="text" placeholder="Full Name" required>
+                    <i class='bx bxs-user'></i>
+                </div>
+                <div class="input-box">
+                    <input type="email" placeholder="Email" required>
+                    <i class='bx bxs-envelope'></i>
+                </div>
+                <div class="input-box">
+                    <input type="password" placeholder="Password" required>
+                    <i class='bx bxs-lock-open'></i>
+                </div>
+                <div class="input-box">
+                    <input type="text" placeholder="Token" required>
+                    <i class='bx bxs-key'></i>
+                </div>
+                <button type="submit" class="btn">Start my Test</button>
+            </form>
+        </div>
+
+        <div class="form-box register">
+            <form action="">
+                <h2>Candidate Registration</h2>
+
+                <div class="input-box">
+                    <input type="text" placeholder="First Name" required>
+                    <i class='bx bxs-user'></i>
+                </div>
+                <div class="input-box">
+                    <input type="text" placeholder="Last Name" required>
+                    <i class='bx bxs-user'></i>
+                </div>
+                <div class="input-box">
+                    <input type="email" placeholder="Email" required>
+                    <i class='bx bxs-envelope'></i>
+                </div>
+                <div class="input-box">
+                    <input type="password" placeholder="Password" required>
+                    <i class='bx bxs-lock-open'></i>
+                </div>
+
+                <div class="input-box">
+                    <input type="password" placeholder="Confirm Password" required>
+                    <i class='bx bxs-lock'></i>
+                </div>
+
+                <button type="submit" class="btn">Register</button>
+            </form>
+        </div>
+
+        <div class="toggle-box">
+            <div class="toggle-panel toggle-left">
+                <h2>Welcome to Interrobot!</h2>
+                <p>The future of Interviews is here! Register & start with SG AI-powered interview.</p>
+                <button class="btn register-btn">Register</button>
+            </div>
+
+            <div class="toggle-panel toggle-right">
+                <h2>Welcome Back!</h2>
+                <p>Already have an account! Start my Interview</p>
+                <button class="btn login-btn">Login</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="candidate_login.js"></script>
+</body>
+
+</html>

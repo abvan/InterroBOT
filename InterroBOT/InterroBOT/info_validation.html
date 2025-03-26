@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validation</title>
+    <style>
+        body {
+            font-family: "Poppins", sans-serif;
+            font-size: 12px;
+            background-image: url(images/bg4.PNG);
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .container {
+            font-family: "Poppins", sans-serif;
+            font-size: 12px;
+            max-width: 600px;
+            width: 100%;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        input, select, textarea {
+            font-family: "Poppins", sans-serif;
+            font-size: 11px;
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            font-family: "Poppins", sans-serif;
+            font-size: 11px;
+            background: linear-gradient(45deg, 
+        rgba(77, 177, 179, 0.9), /* Verdigris */
+        rgba(1, 149, 214, 0.9) /* Rich Electric Blue */
+    );
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            margin: 5px;
+        }
+        button:hover {
+            background: #ccc;
+        }
+        video, canvas, img {
+            width: 100%;
+            border-radius: 5px;
+            display: none;
+        }
+        h2 {
+            text-align: center;
+        }
+        .capture-buttons {
+            display: flex;
+            justify-content: space-around;
+            margin: 10px 0;
+        }
+        .capture-buttons button {
+            width: 22%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Candidate Details</h2>
+        <form id="userForm">
+            <input type="text" id="firstName" placeholder="First Name" required>
+            <input type="text" id="lastName" placeholder="Last Name" required>
+            <input type="email" id="email" placeholder="Email ID" required>
+            <input type="tel" id="phone" placeholder="Phone Number" required>
+            <input type="date" id="dob" required>
+
+            <select id="gender" required>
+                <option value="">Select Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+            </select>
+
+            <label>Capture Image:</label>
+            <video id="video" autoplay></video>
+            <canvas id="canvas"></canvas>
+            <img id="capturedImage" alt="Captured Image">
+
+            <div class="capture-buttons">
+                <button type="button" onclick="startCamera()">Start Camera</button>
+                <button type="button" onclick="capturePhoto()">Capture Photo</button>
+                <button type="button" onclick="retakePhoto()">Retake</button>
+                <button type="button" onclick="savePhoto()">Save</button>
+            </div>
+
+            <input type="hidden" id="profilePictureData">
+            <label>Government-issued ID:</label>
+            <input type="file" id="govID" accept="image/*,.pdf" required>
+            <input type="text" id="country" placeholder="Country" required>
+            <input type="text" id="state" placeholder="State" required>
+            <input type="text" id="city" placeholder="City" required>
+            <input type="text" id="postalCode" placeholder="Postal Code" required>
+            <textarea id="fullAddress" placeholder="Full Postal Address" required></textarea>
+            <input type="text" id="university" placeholder="University/College" required>
+            <input type="text" id="degree" placeholder="Degree & Branch" required>
+            <input type="text" id="grades" placeholder="Grades" required>
+            <input type="text" id="educationDates" placeholder="Education Dates" required>
+            <input type="text" id="employer" placeholder="Previous/Current Employer" required>
+            <input type="text" id="employmentDates" placeholder="Employment Dates" required>
+            <label>Resume/CV:</label>
+            <input type="file" id="resume" accept=".pdf,.doc,.docx" required>
+            <input type="url" id="linkedin" placeholder="LinkedIn Profile">
+            <input type="url" id="github" placeholder="GitHub Profile">
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        let videoStream = null;
+        const video = document.getElementById('video');
+        const canvas = document.getElementById('canvas');
+        const capturedImage = document.getElementById('capturedImage');
+        const profilePictureData = document.getElementById('profilePictureData');
+
+        function startCamera() {
+            navigator.mediaDevices.getUserMedia({ video: true })
+                .then(stream => {
+                    videoStream = stream;
+                    video.srcObject = stream;
+                    video.style.display = "block";
+                    canvas.style.display = "none";
+                    capturedImage.style.display = "none";
+                })
+                .catch(err => console.error("Error accessing camera:", err));
+        }
+
+        function capturePhoto() {
+            if (!videoStream) {
+                alert("Please start the camera first!");
+                return;
+            }
+
+            const context = canvas.getContext('2d');
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+            // Convert to image and display
+            const imageDataUrl = canvas.toDataURL('image/png');
+            profilePictureData.value = imageDataUrl;
+            capturedImage.src = imageDataUrl;
+            capturedImage.style.display = "block";
+            video.style.display = "none";
+
+            // Stop camera
+            videoStream.getTracks().forEach(track => track.stop());
+            videoStream = null;
+        }
+
+        function retakePhoto() {
+            startCamera();
+        }
+
+        function savePhoto() {
+            if (!profilePictureData.value) {
+                alert("No photo captured!");
+                return;
+            }
+            alert("Photo saved successfully!");
+        }
+
+        document.getElementById('userForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            alert("Form submitted successfully!");
+        });
+    </script>
+</body>
+</html>

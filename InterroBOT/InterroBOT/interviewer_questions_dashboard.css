@@ -1,0 +1,124 @@
+/* Basic Styling */
+body {
+    background: linear-gradient(135deg,
+        rgba(184, 230, 231, 0.1),
+        rgba(153, 217, 243, 0.1),
+        rgba(128, 169, 214, 0.1),
+        rgba(244, 140, 165, 0.1),
+        rgba(249, 161, 161, 0.1),
+        rgba(248, 200, 158, 0.1)
+    );
+    background-color: #f9f9f9;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 40px;
+    background-color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.logo {
+    width: 150px;
+}
+
+.logout-btn {
+    background-color: transparent;
+    color: #e74c3c;
+    border: 2px solid #e74c3c;
+    padding: 8px 18px;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+.logout-btn:hover {
+    background-color: #e74c3c;
+    color: white;
+}
+
+/* Content Section with Padding */
+.content {
+    padding: 40px;
+}
+
+/* Domain Selection Alignment with Spacing */
+.domain-selection {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 0px; /* Reduced the margin from 20px to 10px */
+    padding-top: 1pt; /* Optional for a balanced look */
+}
+
+.domain-selection label {
+    font-weight: bold;
+}
+
+/* Adjust Dropdown Width */
+.domain-selection select {
+    width: 250px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background-color: #f1f1f1;
+}
+
+input[type="text"] {
+    width: 90%;
+    padding: 5px;
+}
+
+/* Button Styles */
+button {
+    background-color: #004aad; /* Saint-Gobain Blue */
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 20px; /* Space from the table */
+}
+
+button:hover {
+    background-color: #003580;
+}
+
+/* Edit Button */
+.edit-btn {
+    background-color: #f39c12;
+}
+
+.edit-btn:hover {
+    background-color: #e67e22;
+}
+
+/* Submit Button with Fixed Positioning Removed */
+#submit-btn {
+    background-color: #004aad;
+    margin-top: 20px; /* Space from the table */
+}
+
+#submit-btn:hover {
+    background-color: #003580;
+}
